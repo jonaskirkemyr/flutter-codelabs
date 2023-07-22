@@ -2,6 +2,9 @@
 
 Codelab project, your first flutter app
 
+Followed tutorial at
+codelabs - [Your first Flutter app](https://codelabs.developers.google.com/codelabs/flutter-codelab-first)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
