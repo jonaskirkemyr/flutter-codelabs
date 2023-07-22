@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = GeneratorPage();
         break;
       case 1:
-        page = Placeholder();
+        page = FavoritePage();
         break;
       default:
         throw UnimplementedError("no widget for $selectedIndex");
@@ -181,5 +181,41 @@ class BigCard extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class FavoritePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+    final theme = Theme.of(context);
+
+    if (appState.favorites.isEmpty) {
+      return Center(
+        child: Text(
+          "Looks empty",
+          style: theme.textTheme.displaySmall!.copyWith(
+            color: theme.colorScheme.error,
+          ),
+        ),
+      );
+    }
+
+    return ListView(children: [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          "You have ${appState.favorites.length} favorites:",
+          style: theme.textTheme.displaySmall!.copyWith(
+            color: theme.colorScheme.secondary,
+          ),
+        ),
+      ),
+      for (var s in appState.favorites)
+        ListTile(
+          title: Text(s.asLowerCase),
+          leading: Icon(Icons.check, color: Colors.green),
+        ),
+    ]);
   }
 }
