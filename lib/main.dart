@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:webview_flutter/webview_flutter.dart";
 import "web_view_stack.dart";
 import "navigation_controls.dart";
+import "menu.dart";
 
 void main() {
   runApp(
@@ -38,6 +39,9 @@ class _WebViewAppState extends State<WebViewApp> {
         title: const Text("Flutter WebView"),
         actions: [
           NavigationControls(controller: controller),
+          Menu(
+            controller: controller,
+          )
         ],
       ),
       body: WebViewStack(
