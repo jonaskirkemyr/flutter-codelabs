@@ -1,7 +1,48 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
+import "package:webview_flutter/webview_flutter.dart";
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MaterialApp(
+      theme: ThemeData(useMaterial3: true),
+      home: const WebViewApp(),
+    ),
+  );
+}
+
+class WebViewApp extends StatefulWidget {
+  const WebViewApp({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _WebViewAppState();
+}
+
+class _WebViewAppState extends State<WebViewApp> {
+  late final WebViewController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    /*controller = WebViewController().loadRequest(
+      Uri.parse("https://flutter.dev"),
+    );*/
+    controller = WebViewController()
+      ..loadRequest(
+        Uri.parse("https://flutter.dev"),
+      );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Flutter WebView"),
+      ),
+      body: WebViewWidget(
+        controller: controller,
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +52,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "Flutter Demo",
       theme: ThemeData(
         // This is the theme of your application.
         //
