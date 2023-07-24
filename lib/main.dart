@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "star_counter.dart";
 
 void main() {
   runApp(const StarCounterApp());
@@ -60,7 +61,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 32.0),
-                      child: Text(_repositoryName),
+                      child: GitHubStarCounter(
+                        repositoryName: _repositoryName,
+                      ),
                     ),
                   ],
                 )),
